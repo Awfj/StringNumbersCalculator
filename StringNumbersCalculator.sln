@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringNumbersCalculator", "StringNumbersCalculator\StringNumbersCalculator.csproj", "{688ADA29-7D43-413A-9CAC-E19776933FDE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2EAA9641-0CA7-445E-89B0-9D70832D31FF} = {2EAA9641-0CA7-445E-89B0-9D70832D31FF}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringNumbersMath", "StringNumbersMath\StringNumbersMath.csproj", "{2EAA9641-0CA7-445E-89B0-9D70832D31FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{688ADA29-7D43-413A-9CAC-E19776933FDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{688ADA29-7D43-413A-9CAC-E19776933FDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{688ADA29-7D43-413A-9CAC-E19776933FDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{688ADA29-7D43-413A-9CAC-E19776933FDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EAA9641-0CA7-445E-89B0-9D70832D31FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EAA9641-0CA7-445E-89B0-9D70832D31FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EAA9641-0CA7-445E-89B0-9D70832D31FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EAA9641-0CA7-445E-89B0-9D70832D31FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DEDD94C7-BC14-4F4E-B153-5D3DA5B1D69C}
+	EndGlobalSection
+EndGlobal
