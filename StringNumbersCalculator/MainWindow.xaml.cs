@@ -43,83 +43,55 @@ namespace StringNumbersCalculator
             MessageBox.Show(sum);
         }
 
+        private void Handle_DigitClick(string digit)
+        {
+            if (intermediateResult)
+            {
+                CurrentInput.Text = digit;
+                intermediateResult = false;
+            }
+            else CurrentInput.Text += digit;
+        }
+
         private void Btn0_Click(object sender, RoutedEventArgs e)
         {
-            if (intermediateResult) CurrentInput.Text = "0";
-            else CurrentInput.Text += "0";
+            Handle_DigitClick("0");
         }
         private void Btn1_Click(object sender, RoutedEventArgs e)
         {
-            if (intermediateResult) CurrentInput.Text = "1";
-            else CurrentInput.Text += "1";
+            Handle_DigitClick("1");
         }
         private void Btn2_Click(object sender, RoutedEventArgs e)
         {
-            if (intermediateResult)
-            {
-                CurrentInput.Text = "2";
-                intermediateResult = false;
-            }
-            else CurrentInput.Text += "2";
+            Handle_DigitClick("2");
         }
         private void Btn3_Click(object sender, RoutedEventArgs e)
         {
-            if (intermediateResult)
-            {
-                CurrentInput.Text = "3";
-                intermediateResult = false;
-            }
-            else CurrentInput.Text += "3";
+            Handle_DigitClick("3");
         }
         private void Btn4_Click(object sender, RoutedEventArgs e)
         {
-            if (intermediateResult)
-            {
-                CurrentInput.Text = "4";
-                intermediateResult = false;
-            }
-            else CurrentInput.Text += "4";
+            Handle_DigitClick("4");
         }
         private void Btn5_Click(object sender, RoutedEventArgs e)
         {
-            if (intermediateResult)
-            {
-                CurrentInput.Text = "5";
-                intermediateResult = false;
-            }
-            else CurrentInput.Text += "5";
+            Handle_DigitClick("5");
         }
         private void Btn6_Click(object sender, RoutedEventArgs e)
         {
-            if (intermediateResult) {
-                CurrentInput.Text = "6";
-                intermediateResult = false;
-            }
-            else CurrentInput.Text += "6";
+            Handle_DigitClick("6");
         }
         private void Btn7_Click(object sender, RoutedEventArgs e)
         {
-            if (intermediateResult) {
-                CurrentInput.Text = "7";
-                intermediateResult = false;
-            }
-            else CurrentInput.Text += "7";
+            Handle_DigitClick("7");
         }
         private void Btn8_Click(object sender, RoutedEventArgs e)
         {
-            if (intermediateResult) {
-                CurrentInput.Text = "8";
-                intermediateResult = false;
-            }
-            else CurrentInput.Text += "8";
+            Handle_DigitClick("8");
         }
         private void Btn9_Click(object sender, RoutedEventArgs e)
         {
-            if (intermediateResult) {
-                CurrentInput.Text = "9";
-                intermediateResult = false;
-            }
-            else CurrentInput.Text += "9";
+            Handle_DigitClick("9");
         }
     }
 }
