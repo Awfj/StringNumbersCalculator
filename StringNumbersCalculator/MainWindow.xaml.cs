@@ -8,7 +8,7 @@ namespace StringNumbersCalculator
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string result;
+        private string result = "";
         private bool intermediateResult = false;
 
         public MainWindow()
@@ -29,7 +29,10 @@ namespace StringNumbersCalculator
             string operand = CurrentInput.Text;
 
             PastInput.Text += CurrentInput.Text + " + ";
-            result = result is null ? operand : Summation.Sum(result, operand);
+            result = string.IsNullOrEmpty(result) 
+                ? operand 
+                : Summation.Sum(result, operand);
+
             CurrentInput.Text = result;
             intermediateResult = true;
         }
