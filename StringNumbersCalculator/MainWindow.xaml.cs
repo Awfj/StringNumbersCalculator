@@ -11,6 +11,8 @@ namespace StringNumbersCalculator
         private string result = "";
         private bool intermediateResult = false;
         private string operation = "";
+        private bool calcResult = false;
+        private string operand = "";
 
         public MainWindow()
         {
@@ -22,29 +24,41 @@ namespace StringNumbersCalculator
             switch(operation)
             {
                 case "+":
-                    result = Summation.Sum(result, CurrentInput.Text);
+                    result = Summation.Sum(result, operand);
                     break;
                 case "*":
-                    result = Multiplication.Multiply(result, CurrentInput.Text);
+                    result = Multiplication.Multiply(result, operand);
                     break;
                 case "/":
-                    result = Division.Divide(result, CurrentInput.Text);
+                    result = Division.Divide(result, operand);
                     break;
             }
         }
 
         private void Handle_OperationClick(string operation)
         {
+            if (intermediateResult) return;
+
             if (this.operation is "")
             {
                 this.operation = operation;
             }
 
-            if (result is "") result = CurrentInput.Text;
+            operand = CurrentInput.Text;
+
+            if (result is "") result = operand;
             else CalculateResult();
 
             this.operation = operation;
-            PastInput.Text += $"{CurrentInput.Text} {this.operation} ";
+            if (calcResult)
+            {
+                PastInput.Text = $"{CurrentInput.Text} {this.operation} ";
+            }
+            else
+            {
+                PastInput.Text += $"{CurrentInput.Text} {this.operation} ";
+            }
+
             CurrentInput.Text = result;
             intermediateResult = true;
         }
@@ -63,10 +77,30 @@ namespace StringNumbersCalculator
         }
         private void BtnResult_Click(object sender, RoutedEventArgs e)
         {
-            CalculateResult();
-            PastInput.Text += $"{CurrentInput.Text} = ";
+            if (result is "") result = CurrentInput.Text;
+            else CalculateResult();
+
+            if (operation is "")
+            {
+                string curOperand = CurrentInput.Text == "" ? "0" : CurrentInput.Text;
+                PastInput.Text = $"{curOperand} = ";
+            }
+            else
+            {
+                PastInput.Text = $"{result} {operation} {operand} = ";
+            }
+
             CurrentInput.Text = result;
             intermediateResult = true;
+            calcResult = true;
+        }
+
+        private void Reset()
+        {
+            PastInput.Text = "";
+            result = "";
+            operation = "";
+            calcResult = false;
         }
 
         private void Handle_DigitClick(string digit)
@@ -75,6 +109,8 @@ namespace StringNumbersCalculator
             {
                 CurrentInput.Text = digit;
                 intermediateResult = false;
+
+                if (calcResult) Reset();
             }
             else CurrentInput.Text += digit;
         }
