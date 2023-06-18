@@ -10,40 +10,63 @@ namespace StringNumbersCalculator
     {
         private string result = "";
         private bool intermediateResult = false;
+        private string operation = "";
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void BtnDivision_Click(object sender, RoutedEventArgs e)
+        private void CalculateResult()
         {
-            PastInput.Text += CurrentInput.Text + " / ";
+            switch(operation)
+            {
+                case "+":
+                    result = Summation.Sum(result, CurrentInput.Text);
+                    break;
+                case "*":
+                    result = Multiplication.Multiply(result, CurrentInput.Text);
+                    break;
+                case "/":
+                    result = Division.Divide(result, CurrentInput.Text);
+                    break;
+            }
         }
-        private void BtnMultiplication_Click(object sender, RoutedEventArgs e)
-        {
-            PastInput.Text += CurrentInput.Text + " * ";
-        }
-        private void BtnSummation_Click(object sender, RoutedEventArgs e)
-        {
-            string operand = CurrentInput.Text;
 
-            PastInput.Text += CurrentInput.Text + " + ";
-            result = string.IsNullOrEmpty(result) 
-                ? operand 
-                : Summation.Sum(result, operand);
+        private void Handle_OperationClick(string operation)
+        {
+            if (this.operation is "")
+            {
+                this.operation = operation;
+            }
 
+            if (result is "") result = CurrentInput.Text;
+            else CalculateResult();
+
+            this.operation = operation;
+            PastInput.Text += $"{CurrentInput.Text} {this.operation} ";
             CurrentInput.Text = result;
             intermediateResult = true;
         }
+
+        private void BtnDivision_Click(object sender, RoutedEventArgs e)
+        {
+            Handle_OperationClick("/");
+        }
+        private void BtnMultiplication_Click(object sender, RoutedEventArgs e)
+        {
+            Handle_OperationClick("*");
+        }
+        private void BtnSummation_Click(object sender, RoutedEventArgs e)
+        {
+            Handle_OperationClick("+");
+        }
         private void BtnResult_Click(object sender, RoutedEventArgs e)
         {
-            string operand1 = result;
-            string operand2 = CurrentInput.Text;
-            string operation = "+";
-
-            string sum = Summation.Sum(operand1, operand2);
-            MessageBox.Show(sum);
+            CalculateResult();
+            PastInput.Text += $"{CurrentInput.Text} = ";
+            CurrentInput.Text = result;
+            intermediateResult = true;
         }
 
         private void Handle_DigitClick(string digit)
